@@ -58,3 +58,12 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+
+## 上线步骤
+
+- composer install
+- 新增.env配置数据库
+- 执行 php yii migrate/up
+- 配置common/config/params-local.php
+ -- 新增前端和后端的域名
+ - ...
