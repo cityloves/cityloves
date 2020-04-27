@@ -55,6 +55,14 @@
                             ['label' => '用户列表', 'url' => ['/admin/index']],
                         ],
                     ],
+                    [
+                        'label' => '广告管理',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => '广告新增', 'url' => ['/adv/add']],
+                            ['label' => '广告列表', 'url' => ['/adv/index']],
+                        ],
+                    ],
                 ],
             ]
         ) ?>
