@@ -65,5 +65,5 @@ environments/            contains environment-based overrides
 - 新增.env配置数据库
 - 执行 php yii migrate/up
 - 配置common/config/params-local.php
- -- 新增前端和后端的域名
+ - 新增前端和后端的域名
  - ...

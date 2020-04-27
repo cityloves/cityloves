@@ -13,7 +13,7 @@ class Admin extends ActiveRecord implements IdentityInterface
         return [
             ['username', 'unique', 'message' => '该用户名已经存在,请更换一个'],
             ['passwordHash', 'required'],
-            ['passwordHash', 'setPassword'],
+            // ['passwordHash', 'setPassword'],
             ['status', 'in', 'range' => [0, 1]]
         ];
     }
@@ -67,7 +67,7 @@ class Admin extends ActiveRecord implements IdentityInterface
 
     public function setPassword($password)
     {
-        $this->passwordHash = Yii::$app->security->generatePasswordHash($password);
+        return $this->passwordHash = Yii::$app->security->generatePasswordHash($password);
     }
 
     public static function findByUsername($username)

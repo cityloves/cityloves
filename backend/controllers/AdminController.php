@@ -24,7 +24,9 @@ class AdminController extends Controller
     {
         $post = \Yii::$app->request->post();
         $admin = new Admin();
-        if ($admin->load($post) && $admin->validate() && $admin->save()) {
+        if ($admin->load($post) && $admin->validate()) {
+            $admin->passwordHash = $admin->setPassword($admin->passwordHash);
+            $admin->save();
             
             return $this->redirect('index');
         }
