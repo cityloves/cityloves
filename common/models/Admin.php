@@ -8,6 +8,16 @@ use yii\web\IdentityInterface;
 
 class Admin extends ActiveRecord implements IdentityInterface
 {
+    public function rules()
+    {
+        return [
+            ['username', 'unique', 'message' => '该用户名已经存在,请更换一个'],
+            ['passwordHash', 'required'],
+            ['passwordHash', 'setPassword'],
+            ['status', 'in', 'range' => [0, 1]]
+        ];
+    }
+    
     public static function tableName()
     {
         return 'admin';
@@ -17,7 +27,7 @@ class Admin extends ActiveRecord implements IdentityInterface
     {
         return [
             'username' => '用户名',
-            'password' => '密码'
+            'passwordHash' => '密码'
         ];
     }
 
