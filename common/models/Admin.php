@@ -1,10 +1,12 @@
 <?php
 namespace common\models;
 
+use common\service\IdCardService;
 use yii\db\ActiveRecord;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
+use Validator\MobileValidate;
 
 class Admin extends ActiveRecord implements IdentityInterface
 {
@@ -12,7 +14,10 @@ class Admin extends ActiveRecord implements IdentityInterface
     {
         return [
             ['username', 'unique', 'message' => '该用户名已经存在,请更换一个'],
-            ['passwordHash', 'required'],
+            [['passwordHash', 'mobile', 'idcard'], 'required'],
+            ['mobile', 'unique', 'message' => '该手机号已经存在'],
+            ['mobile', MobileValidate::className()],
+            ['idcard', 'checkIdcard'],
             // ['passwordHash', 'setPassword'],
             ['status', 'in', 'range' => [0, 1]]
         ];
@@ -27,8 +32,18 @@ class Admin extends ActiveRecord implements IdentityInterface
     {
         return [
             'username' => '用户名',
-            'passwordHash' => '密码'
+            'passwordHash' => '密码',
+            'mobile' => '手机号',
+            'idcard' => '身份证号'
         ];
+    }
+
+    public function checkIdcard()
+    {
+        $idcardService = new IdCardService($this->idcard);
+        if (!$idcardService->isValidate()) {
+            return $this->addError('idcard', '身份证号格式不正确');
+        }
     }
 
     public static function initNew($username, $password)

@@ -16,11 +16,15 @@ use yii\widgets\LinkPager;
         <table class="table" id="baofoo-table">
             <tr>
                 <td>用户名</td>
+                <td>手机号</td>
+                <td>身份证号</td>
                 <td>操作</td>
             </tr>
             <?php foreach ($admins as $admin): ?>
                 <tr>
                     <td><?= $admin['username']; ?></td>
+                    <td><?= $admin['mobile']; ?></td>
+                    <td><?= $admin['idcard']; ?></td>
                     <td>
                         <a href = '/admin/edit?id=<?= $admin['id'] ?>'><button class="btn btn-primary">编辑</button></a>
                         <a href = '/admin/delete?id=<?= $admin['id'] ?>'><button class="btn btn-primary">删除</button></a>

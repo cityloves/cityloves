@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c78a72a88ff4a0cd43d297e17292e2f",
+    "content-hash": "4c7f24571a4096c2bb14492f7c1ae80d",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -60,7 +60,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twbs/bootstrap.git",
+                "url": "https://github.com/twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -1460,6 +1460,39 @@
                 "yii2"
             ],
             "time": "2018-09-23T22:00:47+00:00"
+        },
+        {
+            "name": "zyqvalidate/mobile",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cityloves/zyqvalidateMobile.git",
+                "reference": "ec2ab12925fd15a0b174ae581a9ac10b9ed5f582"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cityloves/zyqvalidateMobile/zipball/ec2ab12925fd15a0b174ae581a9ac10b9ed5f582",
+                "reference": "ec2ab12925fd15a0b174ae581a9ac10b9ed5f582",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "zyqvalidate/mobile",
+            "time": "2020-04-28T01:48:14+00:00"
         }
     ],
     "packages-dev": [
