@@ -21,7 +21,8 @@
         "dmstr/yii2-adminlte-asset": "^2.6",
         "lhjx/auth": "dev-master",
         "vlucas/phpdotenv": "^3",
-        "zyqvalidate/mobile": "^1.0"
+        "zyqvalidate/mobile": "^1.0",
+        "zyqvalidate/idcard": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

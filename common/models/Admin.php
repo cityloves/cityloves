@@ -7,6 +7,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
 use Validator\MobileValidate;
+use Validator\IdcardValidate;
 
 class Admin extends ActiveRecord implements IdentityInterface
 {
@@ -16,13 +17,15 @@ class Admin extends ActiveRecord implements IdentityInterface
             ['username', 'unique', 'message' => '该用户名已经存在,请更换一个'],
             [['passwordHash', 'mobile', 'idcard'], 'required'],
             ['mobile', 'unique', 'message' => '该手机号已经存在'],
+            ['idcard', 'unique', 'message' => '该身份证号已经存在'],
             ['mobile', MobileValidate::className()],
-            ['idcard', 'checkIdcard'],
+            //['idcard', 'checkIdcard'],
+            ['idcard', IdcardValidate::className()],
             // ['passwordHash', 'setPassword'],
             ['status', 'in', 'range' => [0, 1]]
         ];
     }
-    
+
     public static function tableName()
     {
         return 'admin';
