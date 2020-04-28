@@ -39,6 +39,7 @@ class AdminController extends Controller
         $admin = Admin::findOne(['id' => $id]);
         if (\Yii::$app->request->isPost) {
             if ($admin->load(\Yii::$app->request->post()) && $admin->validate()) {
+                $admin->passwordHash = $admin->setPassword($admin->passwordHash);
                 $admin->save();
 
                 return $this->redirect('index');
