@@ -11,6 +11,7 @@ class LoginForm extends Model
 {
     public $username;
     public $password;
+    public $verifyCode;
     public $rememberMe = true;
 
     private $_user;
@@ -28,6 +29,7 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            ['verifyCode', 'captcha','message'=>'验证码不正确'],
         ];
     }
 
@@ -35,10 +37,22 @@ class LoginForm extends Model
     {
         return [
             'username' => '用户名',
-            'password' => '密码'
+            'password' => '密码',
+            'verifyCode' => '校验码'
         ];
     }
     
+
+    public function validateVerifyCode($verifyCode)
+    {
+        if(strtolower($this->verifyCode) === strtolower($verifyCode)){
+            return true;
+        }else{
+            $this->addError('verifyCode','验证码错误.');
+        }
+    }
+
+
     /**
      * Validates the password.
      * This method serves as the inline validation for password.

@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\captcha\CaptchaAction;
 
 /**
  * Site controller
@@ -22,7 +23,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'captcha'],
                         'allow' => true,
                     ],
                     [
@@ -41,9 +42,17 @@ class SiteController extends Controller
     public function actions()
     {
         return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
+            'captcha' => [ 
+                'class' => CaptchaAction::class, 
+                'maxLength' => 4, 
+                'minLength' => 4,
+                'backColor'=> 0x000000,//背景颜色
+                'padding' => 5,//间距
+                'height'=>40,//高度
+                'width' => 80,  //宽度  
+                'foreColor'=>0xffffff,     //字体颜色
+                'offset'=>4,        //设置字符偏移量 有效果
+            ], 
         ];
     }
 
