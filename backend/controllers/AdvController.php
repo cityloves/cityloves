@@ -24,7 +24,6 @@ class AdvController extends Controller
     public function actionAdd()
     {
         $post = \Yii::$app->request->post();
-        var_dump($post);die;
         $adv = new Adv();
 
         if ($adv->load($post) && $adv->validate()) {

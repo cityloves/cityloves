@@ -22,7 +22,8 @@
         "lhjx/auth": "dev-master",
         "vlucas/phpdotenv": "^3",
         "zyqvalidate/mobile": "^1.0",
-        "zyqvalidate/idcard": "^1.0"
+        "zyqvalidate/idcard": "^1.0",
+        "phpoffice/phpexcel": "^1.8"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -18,6 +18,7 @@ use yii\widgets\LinkPager;
     </script>
 
 <a href="/news/add"><button class="btn btn-primary">新增新闻</button></a>
+<a href="/news/export"><button class="btn btn-primary">导出</button></a>
 
 <section class="content-header">
     <ol class="breadcrumb">

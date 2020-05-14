@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\News;
+use common\service\ExportService;
 use yii\data\Pagination;
 use yii\web\Controller;
 
@@ -24,7 +25,6 @@ class NewsController extends Controller
     public function actionAdd()
     {
         $post = \Yii::$app->request->post();
-        // var_dump($post);die;
         $news = new News();
         if ($news->load($post) && $news->validate()) {
             $news->save();
@@ -57,5 +57,32 @@ class NewsController extends Controller
     {
         $this->layout = 'dialog';
         return $this->render('testForm');
+    }
+
+    public function actionExport()
+    {
+        $dataTitle = ['body', 'title'];
+        $news = News::find();
+        foreach ($news->each() as $new) {
+            $exportData[] = [
+                'body' => $new->body,
+                'title' => $new->title
+            ];
+        }
+
+        $path = \Yii::getAlias('@console/runtime/');
+        $file = \Yii::getAlias('@app/runtime/'.date('YmdHis').'.xlsx');
+
+        $objPHPExcel = ExportService::initPhpExcelObject($exportData, $dataTitle);
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+
+//浏览器输出
+header('Content-Type: application/vnd.ms-execl');
+header('Content-Disposition: attachment;filename='.$file);
+header('Cache-Control: max-age=0');
+$objWriter->save('php://output');
+
+        // 输出到某个地方
+        //$objWriter->save($file);
     }
 }
