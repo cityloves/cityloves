@@ -10,7 +10,7 @@
 | php | Supervisor 进程管理器 | 管理 PHP-FPM、定时任务和其他常驻进程
 | nginx | Nginx 1.14 HTTP 服务器 | ~ |
 
-DIRECTORY STRUCTURE
+目录结构
 -------------------
 
 ```
