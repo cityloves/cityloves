@@ -44,3 +44,5 @@ phpunit.phar
 
 .env
 /backend/web/upload/picture/
+
+.vscode/

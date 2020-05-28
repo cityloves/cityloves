@@ -22,6 +22,7 @@ class AdminController extends Controller
 
     public function actionAdd()
     {
+        // phpinfo();
         $post = \Yii::$app->request->post();
         $admin = new Admin();
         if ($admin->load($post) && $admin->validate()) {
